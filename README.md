@@ -1,3 +1,5 @@
-Estudo de Caso escolhido: Equipes de gincana
+ESTUDO DE CASO  ESCOLHIDO:
+Equipes de gincana
 
-Aluna: Ester Rosendo de Vasconcelos Moura
+ALUNA: 
+Ester Rosendo de Vasconcelos Moura

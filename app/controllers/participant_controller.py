@@ -28,3 +28,23 @@ def listar_participantes_por_equipe(team_id):
     participants = team.participants
 
     return success_response(participants_schema.dump(participants))
+
+def atualizar_participante(participant_id, data):
+    participante = Participant.query.get_or_404(participant_id)
+
+    dados_validados = participant_schema.load(data, partial=True)
+
+    for key, value in dados_validados.items():
+        setattr(participante, key, value)
+
+    db.session.commit()
+
+    return success_response(participant_schema.dump(participante))
+
+def deletar_participante(participant_id):
+    participante = Participant.query.get_or_404(participant_id)
+
+    db.session.delete(participante)
+    db.session.commit()
+
+    return "", 204

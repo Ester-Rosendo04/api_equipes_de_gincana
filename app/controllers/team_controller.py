@@ -19,3 +19,23 @@ def criar_equipe(data):
     db.session.commit()
 
     return success_response(team_schema.dump(novo_time), 201)
+
+def atualizar_equipe(team_id, data):
+    equipe = Team.query.get_or_404(team_id)
+
+    dados_validados = team_schema.load(data, partial=True)
+
+    for key, value in dados_validados.items():
+        setattr(equipe, key, value)
+
+    db.session.commit()
+
+    return success_response(team_schema.dump(equipe))
+
+def deletar_equipe(team_id):
+    equipe = Team.query.get_or_404(team_id)
+
+    db.session.delete(equipe)
+    db.session.commit()
+
+    return "", 204
